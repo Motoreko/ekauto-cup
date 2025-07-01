@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Turnamen Badminton 2025</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hero {
+      background: url('https://images.unsplash.com/photo-1602524208076-3f26f213cfe4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      color: white;
+      padding: 80px 0;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    .team-badge {
+      padding: 4px 10px;
+      border-radius: 10px;
+      color: white;
+      font-size: 0.875rem;
+    }
+
+    .garuda { background-color: #d63384; }
+    .rajawali { background-color: #0d6efd; }
+    .elang { background-color: #198754; }
+    .harimau { background-color: #ffc107; color: #000; }
+
+    footer {
+      margin-top: 40px;
+      background: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .team-badge {
+        font-size: 0.75rem;
+        padding: 2px 6px;
+      }
+      .list-group-item span {
+        font-size: 0.85rem;
+      }
+      .card-body p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="hero text-center">
+  <div class="container">
+    <h1 class="display-4 fw-bold">🏸 Turnamen Badminton EKAUTO CUP 2025</h1>
+    <p class="lead">Dukung tim favoritmu dan saksikan pertandingan paling seru sepanjang musim!</p>
+  </div>
+</section>
+
+<!-- Konten Utama -->
+<div class="container py-5">
+
+  <!-- Statistik Highlight -->
+  <div class="row text-center mb-5">
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">🔥 Tim Terbaik</h5>
+          <p class="card-text"><span class="badge bg-danger">BPCIP</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">🎯 Skor Tertinggi</h5>
+          <p class="card-text">9 point (BPCIP)</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">🏆 Match Hari KAMIS</h5>
+          <p class="card-text">BPKW vs HO - 18:00 WIB</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab Navigasi -->
+  <ul class="nav nav-tabs" id="turnamenTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="jadwal-tab" data-bs-toggle="tab" data-bs-target="#jadwal" type="button" role="tab">📅 Jadwal</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="klasemen-tab" data-bs-toggle="tab" data-bs-target="#klasemen" type="button" role="tab">📊 Klasemen</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="skor-tab" data-bs-toggle="tab" data-bs-target="#skor" type="button" role="tab">🎮 Skor</button>
+    </li>
+  </ul>
+
+  <!-- Tab Konten -->
+  <div class="tab-content pt-4" id="turnamenTabContent">
+
+    <!-- Jadwal -->
+    <div class="tab-pane fade show active" id="jadwal" role="tabpanel">
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped text-center">
+      <thead class="table-light">
+        <tr>
+          <th>Tanggal</th>
+          <th>Hari</th>
+          <th colspan="3">Divisi </th>
+         
+          <th>Lapangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1-Jul-25</td>
+          <td>Selasa</td>
+          <td><span class="team-badge garuda">BPCIP</span></td>
+          <td>vs</td>
+          <td><span class="team-badge rajawali">BPKW</span></td>
+          <td>nolook (LW)</td>
+        </tr>
+        <tr>
+          <td>3-Jul-25</td>
+          <td>Kamis</td>
+          <td><span class="team-badge rajawali">BPKW</span></td>
+          <td>vs</td>
+          <td><span class="team-badge harimau">HO</span></td>
+          <td>nolook (LW)</td>
+        </tr>
+        <tr>
+          <td>8-Jul-25</td>
+          <td>Selasa</td>
+          <td><span class="team-badge garuda">BPCIP</span></td>
+          <td>vs</td>
+          <td><span class="team-badge harimau">HO</span></td>
+          <td>nolook (LW)</td>
+        </tr>
+        <tr>
+          <td>10-Jul-25</td>
+          <td>Kamis</td>
+          <td><span class="team-badge rajawali">BPKW</span></td>
+          <td>vs</td>
+          <td><span class="team-badge elang">BPSP</span></td>
+          <td>nolook (LW)</td>
+        </tr>
+        <tr>
+          <td>15-Jul-25</td>
+          <td>Selasa</td>
+          <td><span class="team-badge elang">BPSP</span></td>
+          <td>vs</td>
+          <td><span class="team-badge harimau">HO</span></td>
+          <td>nolook (LW)</td>
+        </tr>
+        <tr>
+          <td>17-Jul-25</td>
+          <td>Kamis</td>
+          <td><span class="team-badge garuda">BPCIP</span></td>
+          <td>vs</td>
+          <td><span class="team-badge elang">BPSP</span></td>
+          <td>nolook (LW)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+    <!-- Klasemen -->
+    <div class="tab-pane fade" id="klasemen" role="tabpanel">
+      <div class="table-responsive">
+        <table class="table table-bordered text-center table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th>#</th>
+              <th>Tim</th>
+              <th>Main</th>
+              <th>Menang</th>
+              <th>Kalah</th>
+              <th>Poin</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><span class="team-badge garuda">BPCIP</span></td>
+              <td>1</td>
+              <td>1</td>
+              <td>0</td>
+              <td><strong>7</strong></td>
+            </tr>
+              <tr>
+              <td>2</td>
+              <td><span class="team-badge rajawali">BPKW</span></td>
+              <td>1</td>
+              <td>0</td>
+              <td>1</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><span class="team-badge elang">BPSP</span></td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+          
+            <tr>
+              <td>4</td>
+              <td><span class="team-badge harimau">HO</span></td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Skor -->
+    <div class="tab-pane fade" id="skor" role="tabpanel">
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+          <div><strong>BPCIP</strong> vs BPKW</div>
+          <div class="d-flex gap-2 align-items-center">
+            <span class="badge bg-success rounded-pill">7 - 1</span>
+            <!-- <span class="text-muted small">(21-15, 21-18)</span> -->
+          </div>
+        </li>
+        <!-- <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+          <div><strong>Elang</strong> vs Harimau</div>
+          <div class="d-flex gap-2 align-items-center">
+            <span class="badge bg-primary rounded-pill">2 - 1</span>
+            <span class="text-muted small">(21-19, 18-21, 21-17)</span>
+          </div>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  &copy; 2025 Turnamen Badminton Nasional — Developed by motoreko server
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
