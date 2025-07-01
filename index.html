@@ -6,11 +6,38 @@
   <title>Turnamen Badminton 2025</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    body {
+      background: linear-gradient(to bottom, #c8e6c9, #ffffff);
+    }
     .hero {
       background: url('https://images.unsplash.com/photo-1602524208076-3f26f213cfe4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
       color: white;
       padding: 80px 0;
       text-shadow: 1px 1px 3px #000;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f0f8ff;
+    }
+
+    tbody tr:hover {
+      background-color: #d1ecf1;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .table thead {
+      background-color: #0d6efd;
+      color: white;
+    }
+
+    .table td, .table th {
+      vertical-align: middle;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     .team-badge {
@@ -88,7 +115,7 @@
     <div class="col-md-4 mb-3">
       <div class="card shadow-sm">
         <div class="card-body">
-          <h5 class="card-title">🏆 Match Hari KAMIS</h5>
+          <h5 class="card-title"><i class="bi bi-calendar-event"></i> Match KAMIS 3 Juli 2025</h5>
           <p class="card-text">BPKW vs HO - 18:00 WIB</p>
         </div>
       </div>
@@ -113,9 +140,9 @@
 
     <!-- Jadwal -->
     <div class="tab-pane fade show active" id="jadwal" role="tabpanel">
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped text-center">
-      <thead class="table-light">
+  <div class="table-responsive  rounded overflow-hidden shadow-sm">
+    <table class="table table-bordered table-hover text-center">
+      <thead class="table">
         <tr>
           <th>Tanggal</th>
           <th>Hari</th>
