@@ -81,6 +81,26 @@
       transform: scale(1.02);
     }
 
+    /* Additional image optimization styles */
+    .img-fluid {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .team-photo {
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .match-photo {
+      border-radius: 8px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .match-photo:hover {
+      transform: scale(1.05);
+    }
+
     .team-badge {
       padding: 4px 10px;
       border-radius: 10px;
@@ -140,7 +160,7 @@
   <div class="row text-center mb-5">
      <div class="col-md-4 mb-3">
       <div class="card shadow-sm">
-        <img src="image/bpserpong.jpeg" class="card-img-top" alt="Pemain Terheboh" style="height: 100px; object-fit: contain; background-color: #f8f9fa; padding: 5px;">
+        <!-- <img src="image/bpserpong.jpeg" class="card-img-top" alt="Pemain Terheboh" style="height: 100px; object-fit: contain; background-color: #f8f9fa; padding: 5px;"> -->
         <div class="card-body">
           <h5 class="card-title">🔥 Pemain Terheboh </h5>
           <p class="card-text"><span class="badge bg-info">SEPTI</span></p>
@@ -149,7 +169,7 @@
     </div>
     <div class="col-md-4 mb-3">
       <div class="card shadow-sm">
-        <img src="image/ho.jpeg" class="card-img-top" alt="Tim Terbaik" style="height: 100px; object-fit: contain; background-color: #f8f9fa; padding: 5px;">
+        <!-- <img src="image/ho.jpeg" class="card-img-top" alt="Tim Terbaik" style="height: 100px; object-fit: contain; background-color: #f8f9fa; padding: 5px;"> -->
         <div class="card-body">
           <h5 class="card-title">🔥 Tim Terbaik </h5>
           <p class="card-text"><span class="badge bg-success">HO</span></p>
@@ -158,7 +178,7 @@
     </div>
     <div class="col-md-4 mb-3">
       <div class="card shadow-sm">
-        <img src="image/ho.jpeg" class="card-img-top" alt="Skor Tertinggi" style="height: 100px; object-fit: contain; background-color: #f8f9fa; padding: 5px;">
+        <!-- <img src="image/ho.jpeg" class="card-img-top" alt="Skor Tertinggi" style="height: 100px; object-fit: contain; background-color: #f8f9fa; padding: 5px;"> -->
         <div class="card-body">
           <h5 class="card-title">🎯 Skor Tertinggi</h5>
           <p class="card-text">14 point (HO)</p>
@@ -168,13 +188,21 @@
     <div class="col-md-12 mb-3">
       <div class="card shadow-sm border-warning">
         <div class="row g-0">
+        <div class="col-md-6">
+          <img src="image/bpkw.jpeg" class="img-fluid rounded-start" alt="Tim BPKW" style="height: 100%; width: 100%; object-fit: cover;">
+        </div>
+        <div class="col-md-6">
+          <img src="image/bpserpong.jpeg" class="img-fluid rounded-end" alt="Tim BPSP" style="height: 100%; width: 100%; object-fit: cover;">
+        </div>
+      </div>
+        <!-- <div class="row g-0">
           <div class="col-md-6">
             <img src="image/bpkw.jpeg" class="img-fluid rounded-start" alt="Tim BPKW" style="height: 200px; width: 100%; object-fit: contain; background-color: #f8f9fa; padding: 10px;">
           </div>
           <div class="col-md-6">
             <img src="image/bpserpong.jpeg" class="img-fluid rounded-end" alt="Tim BPSP" style="height: 200px; width: 100%; object-fit: contain; background-color: #f8f9fa; padding: 10px;">
           </div>
-        </div>
+        </div> -->
         <div class="card-body bg-warning bg-opacity-10 text-center">
           <h4 class="card-title text-warning fw-bold">🔥 LIVE MATCH - KAMIS 10 Juli 2025</h4>
           <div class="row align-items-center">
@@ -192,7 +220,7 @@
           </div>
           <hr class="my-3">
           <p class="card-text"><strong>⏰ 18:00 WIB</strong> | <strong>📍 Lapangan Nolook</strong></p>
-          <p class="small text-muted">Pertandingan debut tim BPSP melawan veteran BPKW!</p>
+          <p class="small text-muted">Pertandingan debut tim BPSP melawan  BPKW!</p>
         </div>
       </div>
     </div>
@@ -318,7 +346,7 @@
             <img src="image/bpkw.jpeg" class="card-img-top" alt="Match Hari Ini" style="height: 200px; object-fit: contain; background-color: #f8f9fa; padding: 10px;">
             <div class="card-body bg-warning bg-opacity-10">
               <h6 class="card-title text-warning fw-bold">🔥 BPKW SIAP BERTANDING!</h6>
-              <p class="card-text"><strong>Tim Rajawali</strong><br>Pemain unggulan: Rangga, Rion, Agus</p>
+              <p class="card-text"><strong>Tim Tepok Bulu</strong></p>
             </div>
           </div>
         </div>
@@ -329,113 +357,13 @@
             <img src="image/bpserpong.jpeg" class="card-img-top" alt="Tim BPSP" style="height: 200px; object-fit: contain; background-color: #f8f9fa; padding: 10px;">
             <div class="card-body bg-success bg-opacity-10">
               <h6 class="card-title text-success fw-bold">⭐ BPSP DEBUT HARI INI!</h6>
-              <p class="card-text"><strong>Tim Elang</strong><br>Pendatang baru yang ambisius!</p>
+              <p class="card-text"><strong>Tim Serbu</strong></p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Gallery Tim BPSP -->
-      <h5 class="mt-4 mb-3">🏆 Profil Tim Peserta</h5>
-      <div class="row g-3">
-        <!-- Tim BPSP -->
-        <div class="col-md-6 col-sm-6">
-          <div class="card shadow-sm border-success">
-            <img src="image/bpserpong.jpeg" class="card-img-top" alt="Tim BPSP" style="height: 200px; object-fit: contain; background-color: #f8f9fa; padding: 10px;">
-            <div class="card-body">
-              <h6 class="card-title"><span class="team-badge elang">BPSP</span> Team Profile</h6>
-              <p class="card-text">⭐ Tim pendatang baru yang ambisius!<br>🎯 Siap menggebrak turnamen perdana</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tim BPKW -->
-        <div class="col-md-6 col-sm-6">
-          <div class="card shadow-sm border-primary">
-            <img src="image/bpkw.jpeg" class="card-img-top" alt="Tim BPKW" style="height: 200px; object-fit: contain; background-color: #f8f9fa; padding: 10px;">
-            <div class="card-body">
-              <h6 class="card-title"><span class="team-badge rajawali">BPKW</span> Team Profile</h6>
-              <p class="card-text">💪 Tim berpengalaman dengan semangat juang tinggi!<br>🏸 Veteran turnamen badminton EKAUTO</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Pemain Hari Ini -->
-      <h5 class="mt-4 mb-3">👥 Pemain Yang Akan Bertanding Hari Ini</h5>
-      <div class="row g-3">
-        <!-- Tim BPKW Players -->
-        <div class="col-md-6">
-          <div class="card shadow-sm border-primary">
-            <div class="card-header bg-primary text-white text-center">
-              <h6 class="mb-0"><span class="team-badge rajawali">BPKW</span> Squad</h6>
-            </div>
-            <div class="card-body">
-              <div class="row text-center">
-                <div class="col-4 mb-3">
-                  <img src="https://ui-avatars.com/api/?name=Rangga&background=0d6efd&color=fff&size=80&rounded=true" alt="Rangga" class="rounded-circle mb-2">
-                  <small class="d-block fw-bold">Rangga</small>
-                  <small class="text-muted">Ganda Putra</small>
-                </div>
-                <div class="col-4 mb-3">
-                  <img src="https://ui-avatars.com/api/?name=Rion&background=0d6efd&color=fff&size=80&rounded=true" alt="Rion" class="rounded-circle mb-2">
-                  <small class="d-block fw-bold">Rion</small>
-                  <small class="text-muted">Ganda Putra</small>
-                </div>
-                <div class="col-4 mb-3">
-                  <img src="https://ui-avatars.com/api/?name=Agus&background=0d6efd&color=fff&size=80&rounded=true" alt="Agus" class="rounded-circle mb-2">
-                  <small class="d-block fw-bold">Agus</small>
-                  <small class="text-muted">Mix Doubles</small>
-                </div>
-                <div class="col-6 mb-3">
-                  <img src="https://ui-avatars.com/api/?name=Vina&background=0d6efd&color=fff&size=80&rounded=true" alt="Vina" class="rounded-circle mb-2">
-                  <small class="d-block fw-bold">Vina</small>
-                  <small class="text-muted">Mix Doubles</small>
-                </div>
-                <div class="col-6 mb-3">
-                  <img src="https://ui-avatars.com/api/?name=Imam&background=0d6efd&color=fff&size=80&rounded=true" alt="Imam" class="rounded-circle mb-2">
-                  <small class="d-block fw-bold">Imam</small>
-                  <small class="text-muted">Ganda Putra</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tim BPSP Players -->
-        <div class="col-md-6">
-          <div class="card shadow-sm border-success">
-            <div class="card-header bg-success text-white text-center">
-              <h6 class="mb-0"><span class="team-badge elang">BPSP</span> Squad</h6>
-            </div>
-            <div class="card-body">
-              <div class="row text-center">
-                <div class="col-12 mb-3">
-                  <div class="alert alert-info" role="alert">
-                    <h6 class="mb-2">⭐ Tim Baru - Debut Hari Ini!</h6>
-                    <p class="mb-0 small">Squad BPSP akan diumumkan sebelum pertandingan dimulai. Tetap ikuti perkembangan turnamen!</p>
-                  </div>
-                </div>
-                <div class="col-4 mb-3">
-                  <img src="https://ui-avatars.com/api/?name=Player1&background=198754&color=fff&size=80&rounded=true" alt="Player 1" class="rounded-circle mb-2">
-                  <small class="d-block fw-bold">Player 1</small>
-                  <small class="text-muted">TBA</small>
-                </div>
-                <div class="col-4 mb-3">
-                  <img src="https://ui-avatars.com/api/?name=Player2&background=198754&color=fff&size=80&rounded=true" alt="Player 2" class="rounded-circle mb-2">
-                  <small class="d-block fw-bold">Player 2</small>
-                  <small class="text-muted">TBA</small>
-                </div>
-                <div class="col-4 mb-3">
-                  <img src="https://ui-avatars.com/api/?name=Player3&background=198754&color=fff&size=80&rounded=true" alt="Player 3" class="rounded-circle mb-2">
-                  <small class="d-block fw-bold">Player 3</small>
-                  <small class="text-muted">TBA</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+     
     </div>
 
     <!-- Klasemen -->
