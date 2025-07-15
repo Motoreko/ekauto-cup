@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hadiah Juara - EKAUTO CUP 1</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #e0ecff 0%, #f8fafd 50%, #fffde7 100%);
+      min-height: 100vh;
+    }
+    .prize-card {
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      background: rgba(255,255,255,0.95);
+      margin-bottom: 28px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+    }
+    .prize-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(33,150,243,0.10);
+    }
+    .prize-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    .prize-amount {
+      font-size: 2.1rem;
+      font-weight: bold;
+      color: #219150;
+      letter-spacing: 1px;
+      margin-bottom: 0;
+    }
+    .ekauto-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #ff9800 60%, #ffd54f 100%);
+      color: #fff;
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 5px 22px;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .juara-1 {
+      background: linear-gradient(120deg, #fffde4 0%, #ffe9a7 100%);
+      border: 2.5px solid #ffd700;
+      color: #b8860b;
+      box-shadow: 0 6px 32px rgba(255,215,0,0.10);
+    }
+    .juara-1 .prize-title, .juara-1 .prize-amount {
+      color: #b8860b;
+      text-shadow: 0 1px 0 #fff8dc;
+    }
+    .juara-2 {
+      background: linear-gradient(120deg, #f0f4f8 0%, #e3eafc 100%);
+      border: 2px solid #b0bec5;
+    }
+    .juara-2 .prize-title, .juara-2 .prize-amount {
+      color: #1976d2;
+    }
+    .juara-3 {
+      background: linear-gradient(120deg, #fff3e0 0%, #ffe0b2 100%);
+      border: 2px solid #ffb74d;
+    }
+    .juara-3 .prize-title, .juara-3 .prize-amount {
+      color: #e65100;
+    }
+    .juara-4 {
+      background: linear-gradient(120deg, #f3e5f5 0%, #e1bee7 100%);
+      border: 2px solid #ba68c8;
+    }
+    .juara-4 .prize-title, .juara-4 .prize-amount {
+      color: #6a1b9a;
+    }
+    @media (max-width: 991px) {
+      .prize-amount { font-size: 1.5rem; }
+    }
+    @media print {
+      .juara-print { display: none !important; }
+      .juara-1-print.print-active,
+      .juara-2-print.print-active,
+      .juara-3-print.print-active,
+      .juara-4-print.print-active {
+        display: flex !important;
+      }
+      
+      .total_hadiah { display: none !important; }
+      .print-hide { display: none !important; }
+      body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: linear-gradient(135deg, #e0ecff 0%, #f8fafd 50%, #fffde7 100%) !important;
+      }
+      .prize-card, .juara-1, .juara-2, .juara-3, .juara-4 {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: inherit !important;
+        box-shadow: none !important;
+      }
+      .juara-1 {
+        background: linear-gradient(120deg, #fffde4 0%, #ffe9a7 100%) !important;
+        border-color: #ffd700 !important;
+      }
+      .juara-2 {
+        background: linear-gradient(120deg, #f0f4f8 0%, #e3eafc 100%) !important;
+        border-color: #b0bec5 !important;
+      }
+      .juara-3 {
+        background: linear-gradient(120deg, #fff3e0 0%, #ffe0b2 100%) !important;
+        border-color: #ffb74d !important;
+      }
+      .juara-4 {
+        background: linear-gradient(120deg, #f3e5f5 0%, #e1bee7 100%) !important;
+        border-color: #ba68c8 !important;
+      }
+      .ekauto-badge {
+        background: linear-gradient(90deg, #ff9800 60%, #ffd54f 100%) !important;
+        color: #fff !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <div class="text-center mb-4">
+      <span class="ekauto-badge">EKAUTO CUP 1</span>
+      <h1 class="fw-bold">Daftar Hadiah Juara</h1>
+      <p class="lead">Total hadiah untuk para pemenang turnamen badminton EKAUTO CUP 1</p>
+    </div>
+    <div class="row justify-content-center g-4">
+      <div class="col-12 d-flex justify-content-center juara-print juara-1-print">
+        <div class="card prize-card juara-1 text-center p-4" style="width:340px;max-width:100%;">
+          <!-- Ganti src sesuai path foto juara 1 -->
+          <img src="image/ho.jpeg" alt="Juara 1" class="mb-3 rounded shadow d-block mx-auto" style="width:120px;height:120px;object-fit:cover;">
+          <div class="prize-title">Juara 1</div>
+          <div class="prize-amount">Rp 2.000.000</div>
+        </div>
+      </div>
+      <div class="page-break"></div>
+      <div class="col-12 d-flex justify-content-center juara-print juara-2-print">
+        <div class="card prize-card juara-2 text-center p-4" style="width:340px;max-width:100%;">
+          <img src="image/bpserpong.jpeg" alt="Juara 2" class="mb-3 rounded shadow d-block mx-auto" style="width:120px;height:120px;object-fit:cover;">
+          <div class="prize-title">Juara 2</div>
+          <div class="prize-amount">Rp 1.250.000</div>
+        </div>
+      </div>
+      <div class="page-break"></div>
+      <div class="col-12 d-flex justify-content-center juara-print juara-3-print">
+        <div class="card prize-card juara-3 text-center p-4" style="width:340px;max-width:100%;">
+          <img src="image/bpserpong.jpeg" alt="Juara 3" class="mb-3 rounded shadow d-block mx-auto" style="width:120px;height:120px;object-fit:cover;">
+          <div class="prize-title">Juara 3</div>
+          <div class="prize-amount">Rp 750.000</div>
+        </div>
+      </div>
+      <div class="page-break"></div>
+      <div class="col-12 d-flex justify-content-center juara-print juara-4-print">
+        <div class="card prize-card juara-4 text-center p-4" style="width:340px;max-width:100%;">
+          <img src="image/bpserpong.jpeg" alt="Juara 4" class="mb-3 rounded shadow d-block mx-auto" style="width:120px;height:120px;object-fit:cover;">
+          <div class="prize-title">Juara 4</div>
+          <div class="prize-amount">Rp 500.000</div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center total_hadiah mt-5">
+      <strong>Total Hadiah: <span class="prize-amount" style="font-size:1.5rem;color:#1976d2;">Rp 4.500.000</span></strong>
+    </div>
+  </div>
+  <script>
+function printJuara(n) {
+  // Remove all print-active
+  document.querySelectorAll('.juara-print').forEach(e => e.classList.remove('print-active'));
+  // Add print-active to selected
+  document.querySelector('.juara-' + n + '-print').classList.add('print-active');
+  // Hide print buttons
+  document.querySelectorAll('.print-hide').forEach(e => e.style.display = 'none');
+  window.print();
+  // Restore after print
+  setTimeout(() => {
+    document.querySelectorAll('.juara-print').forEach(e => e.classList.remove('print-active'));
+    document.querySelectorAll('.print-hide').forEach(e => e.style.display = '');
+  }, 500);
+}
+</script>
+<div class="text-center mb-4 print-hide">
+  <button class="btn btn-warning mx-1" onclick="printJuara('1')">Print Juara 1</button>
+  <button class="btn btn-primary mx-1" onclick="printJuara('2')">Print Juara 2</button>
+  <button class="btn btn-info mx-1" onclick="printJuara('3')">Print Juara 3</button>
+  <button class="btn btn-secondary mx-1" onclick="printJuara('4')">Print Juara 4</button>
+</div>
+</body>
+</html>
