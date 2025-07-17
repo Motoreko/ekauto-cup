@@ -9,31 +9,33 @@
     <style>
         body { background: #f7fafc; }
         .team-card {
-            border-radius: 1rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,.07);
-            transition: box-shadow .2s;
+            border-radius: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,.09);
+            transition: box-shadow .2s, transform .2s;
         }
         .team-card:hover {
-            box-shadow: 0 8px 24px rgba(0,0,0,.16);
+            box-shadow: 0 8px 32px rgba(0,0,0,.19);
+            transform: translateY(-2px) scale(1.03);
         }
         .player-avatar {
-            width: 36px;
-            height: 36px;
-            background: #4e73df;
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg,#4e73df 60%, #224abe 100%);
             color: #fff;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            margin-right: 0.5rem;
-            font-size: 1.1rem;
+            margin-right: 0.7rem;
+            font-size: 1.3rem;
+            box-shadow: 0 2px 6px rgba(78,115,223,0.15);
         }
         #loadingBox {
             position: fixed;
             top:0;left:0;right:0;bottom:0;
-            background: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.92);
             z-index: 1000;
             display: flex;
             align-items: center;
@@ -69,6 +71,33 @@
             font-size: 1.1rem;
             margin-bottom: .3rem;
         }
+        .group-label {
+            font-size: 1.02rem;
+            font-weight: 600;
+            padding: .2em .85em;
+            border-radius: 0 1em 1em 0;
+            color: #fff;
+            letter-spacing: 0.05em;
+            margin-left: -1em;
+            margin-right: .7em;
+            display: inline-block;
+        }
+        .group-a {
+            background: linear-gradient(90deg,#1cc88a 90%,#16a77a 100%);
+            box-shadow: 0 1px 6px #1cc88a20;
+        }
+        .group-b {
+            background: linear-gradient(90deg,#f6c23e 90%,#e0a800 100%);
+            box-shadow: 0 1px 6px #f6c23e20;
+        }
+        .team-number {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #4e73df;
+        }
+        .bg-fancy {
+            background: linear-gradient(110deg,#e3eaff 60%,#fdf6c3 100%);
+        }
     </style>
 </head>
 <body>
@@ -78,8 +107,8 @@
         </div>
         <div class="mt-3 fw-bold">Mengacak tim, mohon tunggu <span id="countdown">10</span> detik...</div>
     </div>
-    <div class="container py-5">
-        <h2 class="text-center mb-4">Random Tim Bulutangkis</h2>
+    <div class="container py-5 bg-fancy rounded-4 shadow-sm">
+        <h2 class="text-center mb-4" style="letter-spacing: .03em;">Random Tim Bulutangkis</h2>
         <div class="row mb-3">
             <div class="col-12 col-md-8 mx-auto">
                 <div class="input-group mb-2">
@@ -147,12 +176,24 @@
                 return;
             }
             const shuffled = shuffle([...players]);
+            const nTeams = shuffled.length / 2;
+            const teams = [];
             for (let i = 0; i < shuffled.length; i += 2) {
-                const team = [shuffled[i], shuffled[i + 1]];
+                teams.push([shuffled[i], shuffled[i + 1]]);
+            }
+
+            // Assign groups (half A, half B)
+            let mid = Math.ceil(teams.length / 2);
+            teams.forEach((team, idx) => {
+                const group = idx < mid ? 'A' : 'B';
+                const groupClass = group === 'A' ? 'group-a' : 'group-b';
                 teamsRow.innerHTML += `
                     <div class="col">
-                        <div class="card team-card border-primary">
-                            <div class="card-header bg-primary text-white text-center fw-bold">Tim ${i/2 + 1} </div>
+                        <div class="card team-card border-0 shadow-lg">
+                            <div class="card-header d-flex align-items-center justify-content-between py-2 px-3 border-0">
+                                <span class="group-label ${groupClass}">Group ${group}</span>
+                                <span class="team-number">Tim ${idx + 1}</span>
+                            </div>
                             <div class="card-body d-flex flex-column align-items-center">
                                 <div class="d-flex align-items-center mb-2">
                                     <div class="player-avatar me-2">${getInitials(team[0])}</div>
@@ -166,7 +207,7 @@
                         </div>
                     </div>
                 `;
-            }
+            });
         }
 
         // Initial render
