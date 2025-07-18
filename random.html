@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Random Tim Bulutangkis</title>
+    <title>Hasil Acak Grup Bulutangkis Grade A, B, C</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -64,39 +64,75 @@
             margin: 0;
             overflow: hidden;
         }
-        .list-nama-pemain ol {
-            margin-bottom: 0;
-        }
-        .list-nama-pemain li {
-            font-size: 1.1rem;
-            margin-bottom: .3rem;
+        .grade-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: .01em;
+            margin: 1.5rem 0 .7rem 0;
+            color: #224abe;
+            text-shadow: 0 1px 0 #fff;
+            display: flex;
+            align-items: center;
+            gap: .8em;
         }
         .group-label {
-            font-size: 1.02rem;
+            font-size: 1.05rem;
             font-weight: 600;
-            padding: .2em .85em;
-            border-radius: 0 1em 1em 0;
+            padding: .2em 1em;
+            border-radius: 1.5em;
             color: #fff;
-            letter-spacing: 0.05em;
-            margin-left: -1em;
+            letter-spacing: 0.03em;
             margin-right: .7em;
             display: inline-block;
         }
-        .group-a {
+        .group-1 {
             background: linear-gradient(90deg,#1cc88a 90%,#16a77a 100%);
             box-shadow: 0 1px 6px #1cc88a20;
         }
-        .group-b {
+        .group-2 {
             background: linear-gradient(90deg,#f6c23e 90%,#e0a800 100%);
             box-shadow: 0 1px 6px #f6c23e20;
         }
+        .bg-fancy {
+            background: linear-gradient(110deg,#e3eaff 60%,#fdf6c3 100%);
+        }
         .team-number {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #4e73df;
         }
-        .bg-fancy {
-            background: linear-gradient(110deg,#e3eaff 60%,#fdf6c3 100%);
+        .alert-success-big {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(90deg,#1cc88a 70%,#16a77a 100%);
+            border: none;
+            border-radius: 1em;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            letter-spacing: .03em;
+            padding: 1rem 0;
+            box-shadow: 0 2px 12px #1cc88a22;
+        }
+        .team-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: .03em;
+            color: #224abe;
+            margin-bottom: 0.5em;
+        }
+        .team-card .card-body {
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+        }
+        .grade-c-block {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 3px dashed #e0a80060;
+        }
+        .tim-c-block .card { border: 2px solid #ffde7e; }
+        @media (max-width: 767px) {
+            .team-card { margin-bottom: 2.2rem; }
         }
     </style>
 </head>
@@ -105,27 +141,42 @@
         <div class="spinner-border text-primary" style="width: 4rem; height: 4rem;" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
-        <div class="mt-3 fw-bold">Mengacak tim, mohon tunggu <span id="countdown">10</span> detik...</div>
+        <div class="mt-3 fw-bold">Mengacak grup, mohon tunggu <span id="countdown">10</span> detik...</div>
     </div>
     <div class="container py-5 bg-fancy rounded-4 shadow-sm">
-        <h2 class="text-center mb-4" style="letter-spacing: .03em;">Random Tim Bulutangkis</h2>
+        <h2 class="text-center mb-4" style="letter-spacing: .03em;">Random Grup Bulutangkis <br><span style="font-size:1.1rem;color:#2e59d9;font-weight:normal">GRADE A &amp; B: Group 1 &amp; 2, GRADE C Terpisah (Tetap Ada Tim &amp; Group)</span></h2>
         <div class="row mb-3">
             <div class="col-12 col-md-8 mx-auto">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="playerNames" placeholder="Pisahkan nama pemain dengan koma" value="Andi,Budi,Candra,Doni,Eka,Fadli,Gilang,Hilmi,Iwan,Joko,Kiki,Lina,Mira,Nina,Oscar,Putu,Quinn,Rio,Santi,Tari">
-                    <button class="btn btn-primary" id="generateBtn">Acak Tim</button>
+                <div class="input-group mb-2 justify-content-center">
+                    <button class="btn btn-primary px-4" id="generateBtn">Acak Grup</button>
                 </div>
-                <div class="form-text mb-3">Total pemain: <span id="playerCount">20</span> &mdash; 1 tim berisi 2 orang</div>
+                <div class="form-text mb-3 text-center">
+                    Setelah diacak, TIM dari Grade A &amp; B maupun Grade C akan dibagi ke Group 1 &amp; 2 (acak, misal Tim 1,3,5 masuk Group 1 dan Tim 2,4,6 masuk Group 2).<br>Hanya bisa diacak <b>1x saja</b> (refresh untuk ulangi).
+                </div>
             </div>
         </div>
         <!-- List Nama Pemain -->
         <div id="listNamaPemainBox"></div>
-        <!-- List Tim -->
-        <div id="teamsRow" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"></div>
+        <!-- List Group -->
+        <div id="groupsRow"></div>
     </div>
-
     <script>
-        // Utility: Fisher-Yates Shuffle
+        // Data input GRADE (hardcode sesuai permintaan)
+        const gradeA = [
+            "GUTSY","DWI FITRA","NICO","SIGIT","EDU",
+            "AJI","AGUS.S","IMAM","WAWAN","YUNUS",
+            "M.YUSUP","NURYADI","DJOKO","NOVAL"
+        ];
+        const gradeB = [
+            "HIZKIA","VICTOR","ALFIAN","SUGIATMO","ANDI",
+            "RION","AGUS CIP","BILAL","IWAN G","SAMUEL",
+            "INDRA","ANDRI","HENDRA","NURDIN"
+        ];
+        const gradeC = [
+            "FITA","NOVACAN","LAURA","DIAN","INDRI","INTAN",
+            "LISTI","PINA","ICA","SEPTI","NITA","ERCI"
+        ];
+
         function shuffle(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -133,103 +184,147 @@
             }
             return array;
         }
-
         function getInitials(name) {
             return name.split(' ').map(word => word[0].toUpperCase()).join('');
         }
-
-        function renderNamaPemain(players) {
+        function renderNamaPemain() {
             const box = document.getElementById('listNamaPemainBox');
-            if (!players.length) {
-                box.innerHTML = '';
-                return;
-            }
             box.innerHTML = `
                 <div class="list-nama-pemain" id="listNamaPemain">
-                    <h5 class="mb-3">Daftar Nama Pemain</h5>
-                    <ol class="mb-0">
-                        ${players.map((x,i)=>`<li>${x}</li>`).join('')}
-                    </ol>
+                    <div class="row">
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <div class="grade-title"><span class="badge group-1 px-3 py-2">GRADE A</span></div>
+                            <ol class="mb-4">
+                                ${gradeA.map(x=>`<li>${x}</li>`).join('')}
+                            </ol>
+                        </div>
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <div class="grade-title"><span class="badge group-2 px-3 py-2">GRADE B</span></div>
+                            <ol class="mb-4">
+                                ${gradeB.map(x=>`<li>${x}</li>`).join('')}
+                            </ol>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="grade-title"><span class="badge group-2 px-3 py-2" style="background:linear-gradient(90deg,#f6c23e 90%,#e0a800 100%)">GRADE C</span></div>
+                            <ol class="mb-0">
+                                ${gradeC.map(x=>`<li>${x}</li>`).join('')}
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        function hideNamaPemain() {
+            const namaBox = document.getElementById('listNamaPemain');
+            if (namaBox) namaBox.classList.add('hide');
+        }
+
+        // Helper: Bagi tim ke group1 & group2 (acak, misal tim 1,3,5 ke group1 dan tim 2,4,6 ke group2)
+        function splitTeamsToGroups(teams) {
+            const timNumbers = teams.map(t => t.timNumber);
+            const shuffledTimNumbers = shuffle([...timNumbers]);
+            const mid = Math.ceil(shuffledTimNumbers.length / 2);
+            const group1Numbers = shuffledTimNumbers.slice(0, mid);
+            const group2Numbers = shuffledTimNumbers.slice(mid);
+            const group1 = teams.filter(t => group1Numbers.includes(t.timNumber));
+            const group2 = teams.filter(t => group2Numbers.includes(t.timNumber));
+            return [group1, group2];
+        }
+
+        // Render hasil acak group
+        function renderGroups(timGroup1_AB, timGroup2_AB, timGroup1_C, timGroup2_C) {
+            const groupsRow = document.getElementById('groupsRow');
+            // Group 1 & 2 (Grade A+B)
+            groupsRow.innerHTML = `
+                <div class="alert alert-success-big">
+                    <div>🎉 <b>Selamat!</b> Hasil acak adalah:</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card team-card border-0 shadow-lg">
+                            <div class="card-header d-flex align-items-center justify-content-center py-2 border-0 bg-white mb-2">
+                                <span class="group-label group-1">GROUP 1</span>
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="team-header mb-2">Grade A &amp; B</div>
+                                ${timGroup1_AB.map((team) => `
+                                    <div class="mb-3">
+                                        <div class="team-number mb-1">Tim ${team.timNumber}</div>
+                                        <div class="d-flex align-items-center mb-1">
+                                            <span class="player-avatar me-2">${getInitials(team.a)}</span>
+                                            <span class="fs-5">${team.a} <span class="text-secondary" style="font-size:90%">(A)</span></span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="player-avatar me-2">${getInitials(team.b)}</span>
+                                            <span class="fs-5">${team.b} <span class="text-secondary" style="font-size:90%">(B)</span></span>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                                <div class="team-header mt-4 mb-2">Grade C</div>
+                                ${timGroup1_C.map((team) => `
+                                    <div class="mb-3 tim-c-block">
+                                        <div class="team-number mb-1">Tim ${team.timNumber}</div>
+                                        <div class="d-flex align-items-center mb-1">
+                                            <span class="player-avatar me-2">${getInitials(team.c1)}</span>
+                                            <span class="fs-5">${team.c1} <span class="text-secondary" style="font-size:90%">(C)</span></span>
+                                        </div>
+                                        ${team.c2 ? `
+                                        <div class="d-flex align-items-center">
+                                            <span class="player-avatar me-2">${getInitials(team.c2)}</span>
+                                            <span class="fs-5">${team.c2} <span class="text-secondary" style="font-size:90%">(C)</span></span>
+                                        </div>` : ""}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card team-card border-0 shadow-lg">
+                            <div class="card-header d-flex align-items-center justify-content-center py-2 border-0 bg-white mb-2">
+                                <span class="group-label group-2">GROUP 2</span>
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="team-header mb-2">Grade A &amp; B</div>
+                                ${timGroup2_AB.map((team) => `
+                                    <div class="mb-3">
+                                        <div class="team-number mb-1">Tim ${team.timNumber}</div>
+                                        <div class="d-flex align-items-center mb-1">
+                                            <span class="player-avatar me-2">${getInitials(team.a)}</span>
+                                            <span class="fs-5">${team.a} <span class="text-secondary" style="font-size:90%">(A)</span></span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="player-avatar me-2">${getInitials(team.b)}</span>
+                                            <span class="fs-5">${team.b} <span class="text-secondary" style="font-size:90%">(B)</span></span>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                                <div class="team-header mt-4 mb-2">Grade C</div>
+                                ${timGroup2_C.map((team) => `
+                                    <div class="mb-3 tim-c-block">
+                                        <div class="team-number mb-1">Tim ${team.timNumber}</div>
+                                        <div class="d-flex align-items-center mb-1">
+                                            <span class="player-avatar me-2">${getInitials(team.c1)}</span>
+                                            <span class="fs-5">${team.c1} <span class="text-secondary" style="font-size:90%">(C)</span></span>
+                                        </div>
+                                        ${team.c2 ? `
+                                        <div class="d-flex align-items-center">
+                                            <span class="player-avatar me-2">${getInitials(team.c2)}</span>
+                                            <span class="fs-5">${team.c2} <span class="text-secondary" style="font-size:90%">(C)</span></span>
+                                        </div>` : ""}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             `;
         }
 
-        function hideNamaPemain() {
-            const namaBox = document.getElementById('listNamaPemain');
-            if (namaBox) {
-                namaBox.classList.add('hide');
-            }
-        }
-
-        function showNamaPemain() {
-            const namaBox = document.getElementById('listNamaPemain');
-            if (namaBox) {
-                namaBox.classList.remove('hide');
-            }
-        }
-
-        function renderTeams(players) {
-            const teamsRow = document.getElementById('teamsRow');
-            teamsRow.innerHTML = '';
-            if (players.length % 2 !== 0) {
-                teamsRow.innerHTML = '<div class="col"><div class="alert alert-danger">Jumlah pemain harus genap.</div></div>';
-                return;
-            }
-            const shuffled = shuffle([...players]);
-            const nTeams = shuffled.length / 2;
-            const teams = [];
-            for (let i = 0; i < shuffled.length; i += 2) {
-                teams.push([shuffled[i], shuffled[i + 1]]);
-            }
-
-            // Assign groups (half A, half B)
-            let mid = Math.ceil(teams.length / 2);
-            teams.forEach((team, idx) => {
-                const group = idx < mid ? 'A' : 'B';
-                const groupClass = group === 'A' ? 'group-a' : 'group-b';
-                teamsRow.innerHTML += `
-                    <div class="col">
-                        <div class="card team-card border-0 shadow-lg">
-                            <div class="card-header d-flex align-items-center justify-content-between py-2 px-3 border-0">
-                                <span class="group-label ${groupClass}">Group ${group}</span>
-                                <span class="team-number">Tim ${idx + 1}</span>
-                            </div>
-                            <div class="card-body d-flex flex-column align-items-center">
-                                <div class="d-flex align-items-center mb-2">
-                                    <div class="player-avatar me-2">${getInitials(team[0])}</div>
-                                    <span class="fs-5">${team[0]} </span>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <div class="player-avatar me-2">${getInitials(team[1])}</div>
-                                    <span class="fs-5">${team[1]} </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
         // Initial render
-        function initialRender() {
-            const initialPlayers = document.getElementById('playerNames').value.split(',').map(name => name.trim()).filter(Boolean);
-            document.getElementById('playerCount').innerText = initialPlayers.length;
-            renderNamaPemain(initialPlayers);
-            showNamaPemain();
-            document.getElementById('teamsRow').innerHTML = ''; // tim kosong dulu
-        }
-        initialRender();
+        renderNamaPemain();
 
-        // Input update: otomatis update daftar nama
-        document.getElementById('playerNames').addEventListener('input', function() {
-            const players = this.value.split(',').map(name => name.trim()).filter(Boolean);
-            document.getElementById('playerCount').innerText = players.length;
-            renderNamaPemain(players);
-            showNamaPemain();
-            document.getElementById('teamsRow').innerHTML = ''; // reset tim
-        });
-
-        // Loading logic
+        // Loading logic + only allow 1x acak
+        let hasShuffled = false;
         function showLoading(duration, callback) {
             const loadingBox = document.getElementById('loadingBox');
             const countdown = document.getElementById('countdown');
@@ -251,14 +346,44 @@
             }, 1000);
         }
 
-        // Event: Generate Button
         document.getElementById('generateBtn').addEventListener('click', () => {
-            const input = document.getElementById('playerNames').value;
-            const players = input.split(',').map(name => name.trim()).filter(Boolean);
-            document.getElementById('playerCount').innerText = players.length;
+            if (hasShuffled) return;
+            hasShuffled = true;
+            document.getElementById('generateBtn').classList.add('disabled');
             showLoading(10, () => {
                 hideNamaPemain();
-                renderTeams(players);
+
+                // ===== GRADE A & B =====
+                // Acak grade A dan B
+                let aShuffled = shuffle([...gradeA]);
+                let bShuffled = shuffle([...gradeB]);
+                // Buat pasangan (1A + 1B)
+                let tims_AB = [];
+                let nTim_AB = Math.min(aShuffled.length, bShuffled.length);
+                for(let i=0;i<nTim_AB;i++) {
+                    tims_AB.push({
+                        timNumber: i+1,
+                        a: aShuffled[i],
+                        b: bShuffled[i]
+                    });
+                }
+                // Bagi tim ke group1/group2 (acak)
+                let [timGroup1_AB, timGroup2_AB] = splitTeamsToGroups(tims_AB);
+
+                // ===== GRADE C =====
+                let cShuffled = shuffle([...gradeC]);
+                let tims_C = [];
+                for(let i=0;i<cShuffled.length;i+=2) {
+                    tims_C.push({
+                        timNumber: (i/2)+1,
+                        c1: cShuffled[i],
+                        c2: cShuffled[i+1] || ''
+                    });
+                }
+                // Bagi tim C ke group1/group2 (acak)
+                let [timGroup1_C, timGroup2_C] = splitTeamsToGroups(tims_C);
+
+                renderGroups(timGroup1_AB, timGroup2_AB, timGroup1_C, timGroup2_C);
             });
         });
     </script>
